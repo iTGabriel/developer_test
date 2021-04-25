@@ -26,5 +26,3 @@ class SurveyUserAnswer(models.Model):
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     survey_question = models.ForeignKey(SurveyQuestion, on_delete=models.CASCADE)
     survey_question_alternative = models.ForeignKey(SurveyQuestionAlternative, on_delete=models.CASCADE)
-
-    
