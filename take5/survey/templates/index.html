@@ -1,0 +1,50 @@
+{% include "base/head.html" %}
+
+<div class="container m-auto" style="text-align: center;">
+  <div class="mt-5" style="font-weight: bold; font-size: 5.5rem;">
+    {% load static %}
+    <img src="{% static 'images/logo_take5_original.png' %}" alt="My image">
+    <h2 class="pt-2" style="color:#AAA9AB">Teste - Desenvolvedor Back-end</h2>
+  </div>
+
+  <nav class="nav justify-content-center mt-4 border" id="scroll_tr">
+    <ul class="nav">
+      <li class="nav-item">
+        <a href="" class="nav-link active">Home/Atualizar</a>
+      </li>
+      <li class="nav-item">
+        <a href="http://localhost:8000/api" class="nav-link active">Api</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div>
+    <h2 class="mt-4">Tabela surveys</h2>
+    {% if dados %}
+    <table class="table mt-3">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for dado in dados %}
+        <tr>
+          <th scope="row">{{dado.id}}</th>
+          <td>{{dado.name}}</td>
+          <td>{{dado.description}}</td>
+        </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-warning my-3" role="alert" style="font-weight: bold;">Não há registros na tabela</div>
+    {% endif %}
+
+  </div>
+
+  {% include "base/bottom.html" %}
