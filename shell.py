@@ -1,3 +1,12 @@
+'''
+    # Todas as rotas encontra-se em funcionamento e testadas via django panel e postman.
+    # Fiquei com dúvida referente a 'view' solicitada na etapa 3, se era viewset's do django rest api ou template view, então acabei desenvolvendo ambos.
+        - Template view só faz get da tabela survey_survey(de acordo com o migrate do django, o mesmo coloca prefixo o nome do app) 
+    # Agradeço pelo desafio, me diverti e também aprendi bastante.
+
+    # O script logo abaixo só atende até a etapa 2, ambas opções foram feitas, tanto pelo panel do django quanto via script abaixo.
+    # Deixei disponível em requirements.txt tudo que foi utilizado no projeto
+'''
 if __name__ == '__main__':
 
     import os, sys
