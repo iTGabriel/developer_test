@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import pymysql
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,10 +77,20 @@ WSGI_APPLICATION = 'take5.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        
+        # Mysql config
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'take5_survey',
+        'USER': 'itgabriel',
+        'PASSWORD': 'tester',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+# Faz com que passe a utilizar o driver Python DB API puro e conecte corretamente a banco de dados mysql.
+pymysql.install_as_MySQLdb()
 
 
 # Password validation
