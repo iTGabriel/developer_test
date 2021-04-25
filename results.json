@@ -1,0 +1,6 @@
+{
+    "surveys": "http://localhost:8000/api/surveys/",
+    "surveys/questions/": "http://localhost:8000/api/surveys/questions//",
+    "surveys/questions/alternatives": "http://localhost:8000/api/surveys/questions/alternatives/",
+    "surveys/user/answer": "http://localhost:8000/api/surveys/user/answer/"
+}
