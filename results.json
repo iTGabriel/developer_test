@@ -1,6 +1,78 @@
 {
-    "surveys": "http://localhost:8000/api/surveys/",
-    "surveys/questions/": "http://localhost:8000/api/surveys/questions//",
-    "surveys/questions/alternatives": "http://localhost:8000/api/surveys/questions/alternatives/",
-    "surveys/user/answer": "http://localhost:8000/api/surveys/user/answer/"
+    "rotas": {
+        "surveys": "http://localhost:8000/api/surveys/",
+        "surveys/questions/": "http://localhost:8000/api/surveys/questions//",
+        "surveys/questions/alternatives": "http://localhost:8000/api/surveys/questions/alternatives/",
+        "surveys/user/answer": "http://localhost:8000/api/surveys/user/answer/"
+    },
+    
+    "/api/surveys/": [
+        {
+            "id": 1,
+            "name": "Django é estável?",
+            "description": "Empresas como Disqus, Instagram, Pinterest e Mozilla têm usado Django por muito anos. Sites desenvolvidos em Django resistem a picos de tráfego de mais de 50 mil acessos por segundo."
+        },
+        {
+            "id": 2,
+            "name": "Django escala ?",
+            "description": "Teste de descrição."
+        }
+    ],
+
+    "/api/surveys/questions//": [
+        {
+            "id": 1,
+            "question": "A descrição da pergunta, é verdadeira ou negativa ?",
+            "survey": 1
+        },
+        {
+            "id": 2,
+            "question": "Escolha uma das alternativas.",
+            "survey": 2
+        }
+    ],
+
+    "/api/surveys/questions/alternatives/": [
+        {
+            "id": 1,
+            "question_alternative": "Sim",
+            "survey": 1,
+            "survey_question": 1
+        },
+        {
+            "id": 2,
+            "question_alternative": "Não",
+            "survey": 1,
+            "survey_question": 1
+        },
+        {
+            "id": 3,
+            "question_alternative": "Sim, o tempo de desenvolvimento em django é rápido e projetado para aproveitar o máximo de hardware quanto você pode dar a ele.",
+            "survey": 2,
+            "survey_question": 2
+        },
+        {
+            "id": 4,
+            "question_alternative": "Não, o tempo de desenvolvimento é demorado e nada benéfico ao negócio.",
+            "survey": 2,
+            "survey_question": 2
+        }
+    ],
+
+    "/api/surveys/user/answer/": [
+        {
+            "id": 1,
+            "user": "User 1",
+            "survey": 1,
+            "survey_question": 1,
+            "survey_question_alternative": 1
+        },
+        {
+            "id": 2,
+            "user": "User 2",
+            "survey": 2,
+            "survey_question": 2,
+            "survey_question_alternative": 3
+        }
+    ]
 }
