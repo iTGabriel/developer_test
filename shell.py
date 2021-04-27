@@ -4,7 +4,6 @@
         - Template view só faz get da tabela survey_survey(de acordo com o migrate do django, o mesmo coloca prefixo o nome do app) 
     # Agradeço pelo desafio, me diverti e também aprendi bastante.
 
-    # O script logo abaixo só atende até a etapa 2, ambas opções foram feitas, tanto pelo panel do django quanto via script abaixo.
     # Deixei disponível em requirements.txt tudo que foi utilizado no projeto
 '''
 if __name__ == '__main__':
@@ -20,16 +19,40 @@ if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'take5.take5.settings')
     django.setup()
 
-    import sqlite3
-    from survey.models import Survey
-    
-    connection = sqlite3.connect(f"{diretorio_atual}\\db.sqlite3")
-    cursor = connection.cursor()
+    from survey.models import *
 
-    pesquisa = cursor.execute("SELECT * FROM survey_survey")
-    pesquisa_contagem = len(pesquisa.fetchall()) + 1
+    try:
+        # Primeiro insert
+        survey = Survey(name="Django é estável?", description="Empresas como Disqus, Instagram, Pinterest e Mozilla têm usado Django por muito anos. Sites desenvolvidos em Django resistem a picos de tráfego de mais de 50 mil acessos por segundo.")
+        survey_question = SurveyQuestion(survey=survey, question="A descrição da pergunta, é verdadeira ou negativa ?")
+        survey_question_alternative_sim = SurveyQuestionAlternative(survey=survey, survey_question=survey_question, question_alternative="Sim")
+        survey_question_alternative_nao = SurveyQuestionAlternative(survey=survey, survey_question=survey_question, question_alternative="Não")
+        survey_user_answer = SurveyUserAnswer(user="User 1", survey=survey, survey_question=survey_question, survey_question_alternative=survey_question_alternative_sim)
+        survey.save()
+        survey_question.save()
+        survey_question_alternative_sim.save()
+        survey_question_alternative_nao.save()
+        survey_user_answer.save()
+        print("Sucesso ao realizar o primeiro 1º registro no banco de dados")
+    except:
+        print("Falha ao realizar o primeiro 1º registro no banco de dados")
 
-    sql = f"INSERT INTO survey_survey VALUES ('{pesquisa_contagem}','Pesquisa teste {pesquisa_contagem}', 'Teste {pesquisa_contagem}')"
-    cursor.execute(sql)
-    connection.commit()
-    connection.close()
+    try:
+        # Segundo insert
+        survey = Survey(name="Django escala ?", description="Teste de descrição.")
+        survey_question = SurveyQuestion(survey=survey, question="Escolha uma das alternativas.")
+        survey_question_alternative_sim = SurveyQuestionAlternative(survey=survey, survey_question=survey_question, question_alternative="Sim, o tempo de desenvolvimento em django é rápido e projetado para aproveitar o máximo de hardware quanto você pode dar a ele.")
+        survey_question_alternative_nao = SurveyQuestionAlternative(survey=survey, survey_question=survey_question, question_alternative="Não, o tempo de desenvolvimento é demorado e nada benéfico ao negócio.")
+        survey_user_answer = SurveyUserAnswer(user="User 2", survey=survey, survey_question=survey_question, survey_question_alternative=survey_question_alternative_sim)
+        survey.save()
+        survey_question.save()
+        survey_question_alternative_sim.save()
+        survey_question_alternative_nao.save()
+        survey_user_answer.save()
+        print("Sucesso ao realizar o segundo 2º registro no banco de dados")
+    except:
+        print("Falha ao realizar o segundo 2º registro no banco de dados")
+
+
+
+

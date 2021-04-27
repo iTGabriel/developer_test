@@ -5,8 +5,8 @@ from django.db import models
 
 class Survey(models.Model):
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    description = models.TextField(max_length=150)
+    name = models.CharField(max_length=200)
+    description = models.TextField(max_length=200)
 
     def __str__(self):
         return f"{self.name}"
@@ -14,7 +14,7 @@ class Survey(models.Model):
 class SurveyQuestion(models.Model):
     id = models.BigAutoField(primary_key=True)
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
-    question = models.CharField(max_length=50)
+    question = models.CharField(max_length=150)
 
     def __str__(self):
         return f"{self.question}"
@@ -23,7 +23,7 @@ class SurveyQuestionAlternative(models.Model):
     id = models.BigAutoField(primary_key=True)
     survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
     survey_question = models.ForeignKey(SurveyQuestion, on_delete=models.CASCADE)
-    question_alternative = models.CharField(max_length=30)
+    question_alternative = models.CharField(max_length=150)
 
     def __str__(self):
         return f"{self.question_alternative}"

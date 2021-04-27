@@ -21,21 +21,21 @@
   <div>
     <h2 class="mt-4">Tabela surveys</h2>
     {% if dados %}
-    <table class="table mt-3">
+    <table class="table table-bordered mt-3">
       <thead class="table-dark">
         <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Name</th>
+          <th scope="col" style="width: 60px;">ID</th>
+          <th scope="col" style="width: 150px;">Name</th>
           <th scope="col">Description</th>
         </tr>
       </thead>
       <tbody>
 
         {% for dado in dados %}
-        <tr>
+        <tr style="vertical-align: middle;">
           <th scope="row">{{dado.id}}</th>
           <td>{{dado.name}}</td>
-          <td>{{dado.description}}</td>
+          <td style="text-align: left;">{{dado.description}}</td>
         </tr>
         {% endfor %}
 
