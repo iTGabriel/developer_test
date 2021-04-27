@@ -5,8 +5,8 @@ from django.db import models
 
 class Survey(models.Model):
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=20)
-    description = models.TextField(max_length=120)
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=150)
 
     def __str__(self):
         return f"{self.name}"
