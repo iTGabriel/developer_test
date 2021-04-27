@@ -1,1 +1,5 @@
 Django==3.2
+django-filter==2.4.0
+djangorestframework==3.12.4
+PyMySQL==1.0.2
+requests==2.24.0
