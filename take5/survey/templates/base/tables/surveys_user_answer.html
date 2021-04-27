@@ -1,0 +1,52 @@
+<div>
+    <h2 class="mt-4">Tabela surveys</h2>
+    {% if dados_surveys %}
+    <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" style="width: 60px;">ID</th>
+                <th scope="col" style="width: 100px;">Usuário</th>
+                <th scope="col" style="text-align: left;">Pesquisa</th>
+                <th scope="col" style="text-align: left;">Questão/Pergunta</th>
+                <th scope="col" style="text-align: left;">Alternativa</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+
+            {% for dado_user_answer in dados_user_answer %}
+                {% for dado_survey in dados_surveys %}
+                    {% if dado_survey.id == dado_user_answer.survey %}
+                        {% for dado_question in dados_questions %}
+                            {% if dado_question.id == dado_user_answer.survey_question %}
+                                {% for dado_alternative in dados_alternatives %}
+                                
+                                    {% if dado_alternative.id == dado_user_answer.survey_question_alternative %}
+
+                                    <tr>
+                                        <th scope="row">{{dado_user_answer.id}}</th>
+
+                                        <td >{{dado_user_answer.user}}</td>
+                                        <td >{{dado_survey.name}}</td>
+                                        <td style="text-align: left;">{{dado_question.question}}</td>
+                                        <td style="text-align: left;">{{dado_alternative.question_alternative}}</td>
+                                    </tr>
+
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-warning my-3" role="alert" style="font-weight: bold;">Não há registros na tabela</div>
+    {% endif %}
+
+
+</div>
+

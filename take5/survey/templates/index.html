@@ -18,33 +18,20 @@
     </ul>
   </nav>
 
-  <div>
-    <h2 class="mt-4">Tabela surveys</h2>
-    {% if dados %}
-    <table class="table table-bordered mt-3">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col" style="width: 60px;">ID</th>
-          <th scope="col" style="width: 150px;">Name</th>
-          <th scope="col">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        {% for dado in dados %}
-        <tr style="vertical-align: middle;">
-          <th scope="row">{{dado.id}}</th>
-          <td>{{dado.name}}</td>
-          <td style="text-align: left;">{{dado.description}}</td>
-        </tr>
-        {% endfor %}
-
-      </tbody>
-    </table>
-    {% else %}
-    <div class="alert alert-warning my-3" role="alert" style="font-weight: bold;">Não há registros na tabela</div>
-    {% endif %}
-
-  </div>
-
+  {% include "base/tables/surveys.html" with dados_surveys=dados_surveys %}
+  
+  <hr class="mt-5">
+  <hr class="mb-5">
+  {% include "base/tables/surveys_questions.html" with dados_surveys=dados_surveys dados_questions=dados_questions %}
+  
+  <hr class="mt-5">
+  <hr class="mb-5">
+  {% include "base/tables/surveys_questions_alternative.html" with dados_surveys=dados_surveys dados_questions=dados_questions dados_alternatives=dados_alternatives %}
+  
+  <hr class="mt-5">
+  <hr class="mb-5">
+  {% include "base/tables/surveys_user_answer.html" with dados_surveys=dados_surveys dados_questions=dados_questions dados_alternatives=dados_alternatives dados_user_answer=dados_user_answer %}
+  
+  <hr class="mt-5">
+  <hr class="mb-5">
   {% include "base/bottom.html" %}

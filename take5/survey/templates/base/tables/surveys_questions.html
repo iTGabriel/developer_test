@@ -1,0 +1,35 @@
+<div>
+    <h2>Tabela surveys questions</h2>
+    {% if dados_questions %}
+    <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col" style="width: 60px;">ID</th>
+                <th scope="col" style="width: 150px; text-align: left;">Pesquisa</th>
+                <th scope="col" style="text-align: left;">Questão/Pergunta</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for dado_question in dados_questions %}
+                {% for dado_surveys in dados_surveys %}
+
+                    {% if dado_surveys.id == dado_question.survey %}
+
+                    <tr style="vertical-align: middle;">
+                        <th scope="row">{{dado_question.id}}</th>
+
+                        <td>{{dado_surveys.name}}</td>
+                        <td style="text-align: left;">{{dado_question.question}}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-warning my-3" role="alert" style="font-weight: bold;">Não há registros na tabela</div>
+    {% endif %}
+
+</div>
